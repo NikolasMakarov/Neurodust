@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- ============================== Neutrosludge ============================== -->
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>CC_Neutrosludge</defName>
+    <label>neutrosludge</label>
+    <description>A semi-clear, chemically unstable sludge made by dissolving raw meat in chemfuel and distilling the slurry through filters. This glowing blue ooze is the base for numerous back-alley drugs. It looks unstable, like something that shouldn't be consumed... but will be anyway.</description>
+    <graphicData>
+      <texPath>Things/Item/Material/CC_Neutrosludge</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.95</drawSize>
+    </graphicData>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToMake>60</WorkToMake>
+      <MarketValue>8</MarketValue>
+      <Mass>0.05</Mass>
+      <DeteriorationRate>1.0</DeteriorationRate>
+      <Flammability>0.2</Flammability>
+    </statBases>
+  </ThingDef>
+
+<!-- ============================== Neurodust ============================== -->
+
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>CC_Neurodust</defName>
+    <label>neurodust</label>
+    <description>A fine, glittering blue powder snorted for a potent burst of speed and focus. Favored by raiders and desperate workers alike, Neurodust floods the brain with synthetic neurotransmitters—until it burns out the pathways it hijacks. Highly addictive, often deadly in high doses. Users call it “lightning for the soul.”</description>
+    <possessionCount>5</possessionCount>
+    <descriptionHyperlinks>
+      <HediffDef>NeurodustHigh</HediffDef>
+      <HediffDef>NeurodustTolerance</HediffDef>
+      <HediffDef>NeurodustAddiction</HediffDef>
+      <HediffDef>ChemicalDamageSevere</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Drug/CC_Neurodust</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.75</drawSize>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>350</WorkToMake>
+      <MarketValue>20</MarketValue>
+      <Mass>0.05</Mass>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <minRewardCount>10</minRewardCount>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>0.20</joy>
+      <drugCategory>Hard</drugCategory>
+      <baseIngestTicks>150</baseIngestTicks>
+      <ingestSound>Ingest_Snort</ingestSound>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.21,0,0.05)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Snort {0}</ingestCommandString>
+      <ingestReportString>Snorting {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>NeurodustHigh</hediffDef>
+          <severity>0.75</severity>
+          <toleranceChemical>Neurodust</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>0.4</offset>
+          <toleranceChemical>Neurodust</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>NeurodustTolerance</hediffDef>
+          <toleranceChemical>Neurodust</toleranceChemical>
+          <severity>0.040</severity>
+          <divideByBodySize>true</divideByBodySize>
+          <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <researchPrerequisite>PsychiteRefining</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1700</displayPriority>
+    </recipeMaker>
+    <costList>
+      <PsychoidLeaves>2</PsychoidLeaves>
+      <CC_Neutrosludge>2</CC_Neutrosludge>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>Neurodust</chemical>
+        <addictiveness>0.01</addictiveness>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <listOrder>100</listOrder>
+        <overdoseSeverityOffset>0.18~0.35</overdoseSeverityOffset>
+        <largeOverdoseChance>0.01</largeOverdoseChance>
+      </li>
+    </comps>
+    <allowedArchonexusCount>200</allowedArchonexusCount>
+  </ThingDef>
+</Defs>
