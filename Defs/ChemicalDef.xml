@@ -27,12 +27,20 @@
             <capMods>
               <li>
                 <capacity>Manipulation</capacity>
-                <offset>-0.20</offset>
+                <offset>-0.10</offset>
               </li>
-                <li>
+              <li>
                 <capacity>Sight</capacity>
                 <offset>-0.20</offset>
-                </li>
+              </li>
+              <li>
+                <capacity>Consciousness</capacity>
+                <offset>-0.10</offset>
+              </li>
+              <li>
+                <capacity>Moving</capacity>
+                <offset>-0.20</offset>
+              </li>
             </capMods>
           <hediffGivers>
             <li Class="HediffGiver_Random">
@@ -46,7 +54,7 @@
         </li>
         <li>
           <minSeverity>0.25</minSeverity>
-          <label>effect</label>
+          <label>active</label>
           <painFactor>0.8</painFactor>
           <capMods>
             <li>
@@ -56,6 +64,21 @@
             <li>
               <capacity>Moving</capacity>
               <offset>-0.20</offset>
+            </li>
+          </capMods>
+        </li>
+        <li>
+          <minSeverity>0.85</minSeverity>
+          <label>overload</label>
+          <painFactor>0.5</painFactor>
+          <capMods>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>-0.10</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>0.10</offset>
             </li>
           </capMods>
         </li>
@@ -70,14 +93,19 @@
     <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
     <stages>
       <li>
+        <label>crashed from nurodust</label>
+        <description>The world slowed down too much…</description>
+        <baseMoodEffect>-15</baseMoodEffect>
+      </li>
+      <li>
         <label>high on nurodust</label>
         <description>Everything feels sharp and electric!</description>
         <baseMoodEffect>20</baseMoodEffect>
       </li>
       <li>
-        <label>crashed from nurodust</label>
-        <description>The world slowed down too much…</description>
-        <baseMoodEffect>-15</baseMoodEffect>
+        <label>overload on nurodust</label>
+        <description>I am the storm that is approaching...</description>
+        <baseMoodEffect>30</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -200,4 +228,475 @@
     </hediffGivers>
   </HediffDef>
   
+<!-- ============================== Brainstem High ============================== -->
+
+  <HediffDef>
+    <defName>BrainstemHigh</defName>
+    <label>high on brainstem</label>
+    <labelNoun>a brainstem high</labelNoun>
+    <description>Active brainstem compound in the bloodstream. Consciousness amplified. Neural activity elevated beyond normal thresholds.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.5</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+      <stages>
+        <li>
+          <label>recover</label>
+            <capMods>
+              <li>
+                <capacity>Consciousness</capacity>
+                <offset>-0.10</offset>
+              </li>
+            </capMods>
+          <hediffGivers>
+            <li Class="HediffGiver_Random">
+              <hediff>ChemicalDamageModerate</hediff>
+              <mtbDays>10</mtbDays>
+              <partsToAffect>
+                <li>Brain</li>
+              </partsToAffect>
+            </li>
+          </hediffGivers>
+        </li>
+        <li>
+          <minSeverity>0.25</minSeverity>
+          <label>crash</label>
+          <painFactor>0.9</painFactor>
+          <socialFightChanceFactor>1.5</socialFightChanceFactor>
+            <capMods>
+              <li>
+                <capacity>Manipulation</capacity>
+                <offset>-0.10</offset>
+              </li>
+              <li>
+                <capacity>Sight</capacity>
+                <offset>-0.20</offset>
+              </li>
+              <li>
+                <capacity>Consciousness</capacity>
+                <offset>-0.30</offset>
+              </li>
+            </capMods>
+          <hediffGivers>
+            <li Class="HediffGiver_Random">
+              <hediff>ChemicalDamageModerate</hediff>
+              <mtbDays>10</mtbDays>
+              <partsToAffect>
+                <li>Brain</li>
+              </partsToAffect>
+            </li>
+          </hediffGivers>
+        </li>
+        <li>
+          <minSeverity>0.55</minSeverity>
+          <label>active</label>
+          <painFactor>0.8</painFactor>
+          <capMods>
+             <li>
+               <capacity>Manipulation</capacity>
+               <offset>0.20</offset>
+            </li>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>0.50</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>0.30</offset>
+            </li>
+          </capMods>
+        </li>
+        <li>
+          <minSeverity>0.90</minSeverity>
+          <label>overload</label>
+          <painFactor>0.5</painFactor>
+          <capMods>
+             <li>
+               <capacity>Manipulation</capacity>
+               <offset>0.35</offset>
+            </li>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>0.80</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>-0.20</offset>
+            </li>
+            <li>
+              <capacity>Sight</capacity>
+              <offset>0.15</offset>
+            </li>
+          </capMods>
+        </li>
+      </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>BrainstemHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>BrainstemHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>recovered from brainstem</label>
+        <description>I am not feeling well...</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>crashed from brainstem</label>
+        <description>The world slowed down too much…</description>
+        <baseMoodEffect>-15</baseMoodEffect>
+      </li>
+      <li>
+        <label>high on brainstem</label>
+        <description>I can hear it.</description>
+        <baseMoodEffect>20</baseMoodEffect>
+      </li>
+      <li>
+        <label>overload on brainstem</label>
+        <description>I can hear the void. And it makes sense.</description>
+        <baseMoodEffect>30</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  
+  <!-- Brainstem addiction -->
+
+  <ChemicalDef>
+    <defName>Brainstem</defName>
+    <label>brainstem</label>
+    <addictionHediff>BrainstemAddiction</addictionHediff>
+    <geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>Chemical_Brainstem</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>brainstem</label>
+    <description>Because of a brainstem addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
+    <fallPerDay>0.333</fallPerDay>
+    <listPriority>45</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="AddictionBase">
+    <defName>BrainstemAddiction</defName>
+    <label>brainstem addiction</label>
+    <description>A chemical addiction to brainstem. Long-term presence of brainstem has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.
+\nWithout regular doses of brainstem, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>Chemical_Brainstem</causesNeed>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.045</severityPerDay>
+        <showDaysToRecover>true</showDaysToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+      <li>
+        <label>withdrawal</label>
+        <painFactor>3</painFactor>
+        <hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+        <statOffsets>
+          <RestFallRateFactor>0.3</RestFallRateFactor>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.45</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>40</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <ThoughtDef>
+    <defName>BrainstemWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>BrainstemAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>brainstem withdrawal</label>
+        <description>I need that lightning powder again… everything feels dull.</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>BrainstemTolerance</defName>
+    <label>brainstem tolerance</label>
+    <description>A built-up tolerance to brainstem. The more severe this tolerance is, the more brainstem it takes to get the same effect.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.015</severityPerDay>
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>Brainstem</chemical>
+      </li>
+    </comps>
+    <hediffGivers>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.45, 99999)</li>
+            <li>(0.5, 120)</li>
+            <li>(1, 90)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Brain</li>
+        </partsToAffect>
+      </li>
+    </hediffGivers>
+  </HediffDef>
+  
+<!-- ============================== Sludgemycin High ============================== -->
+
+  <HediffDef>
+    <defName>SludgemycinHigh</defName>
+    <label>high on sludgemycin</label>
+    <labelNoun>a sludgemycin high</labelNoun>
+    <description>Active sludgemycin compound in the bloodstream. Consciousness amplified. Neural activity elevated beyond normal thresholds.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.5</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+      <stages>
+        <li>
+          <label>crash</label>
+          <makeImmuneTo><li>WoundInfection</li></makeImmuneTo>
+          <painFactor>1.3</painFactor>
+            <capMods>
+              <li>
+                <capacity>Moving</capacity>
+                <offset>-0.20</offset>
+              </li>
+              <li>
+                <capacity>Consciousness</capacity>
+                <offset>-0.10</offset>
+              </li>
+            </capMods>
+          <hediffGivers>
+            <li Class="HediffGiver_Random">
+              <hediff>ChemicalDamageModerate</hediff>
+              <mtbDays>10</mtbDays>
+              <partsToAffect>
+                <li>Liver</li>
+              </partsToAffect>
+            </li>
+          </hediffGivers>
+        </li>
+        <li>
+          <minSeverity>0.25</minSeverity>
+          <label>active</label>
+          <makeImmuneTo><li>WoundInfection</li></makeImmuneTo>
+          <painFactor>0.9</painFactor>
+          <capMods>
+              <li>
+                <capacity>Moving</capacity>
+                <offset>-0.10</offset>
+              </li>
+              <li>
+                <capacity>Consciousness</capacity>
+                <offset>-0.10</offset>
+              </li>
+          </capMods>
+        </li>
+        <li>
+          <minSeverity>0.85</minSeverity>
+          <label>overload</label>
+          <makeImmuneTo><li>WoundInfection</li></makeImmuneTo>
+          <painFactor>0.7</painFactor>
+          <capMods>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>0.10</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>-0.10</offset>
+            </li>
+          </capMods>
+        </li>
+      </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>SludgemycinHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>SludgemycinHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>crashed from sludgemycin</label>
+        <description>Sludgy regrets…</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>high on sludgemycin</label>
+        <description>I can hear it.</description>
+        <baseMoodEffect>20</baseMoodEffect>
+      </li>
+      <li>
+        <label>overload on sludgemycin</label>
+        <description>I can hear the void. And it makes sense.</description>
+        <baseMoodEffect>30</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  
+  <!-- Sludgemycin addiction -->
+
+  <ChemicalDef>
+    <defName>Sludgemycin</defName>
+    <label>sludgemycin</label>
+    <addictionHediff>SludgemycinAddiction</addictionHediff>
+    <geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>Chemical_Sludgemycin</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>sludgemycin</label>
+    <description>Because of a sludgemycin addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
+    <fallPerDay>0.333</fallPerDay>
+    <listPriority>45</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="AddictionBase">
+    <defName>SludgemycinAddiction</defName>
+    <label>sludgemycin addiction</label>
+    <description>A chemical addiction to sludgemycin. Long-term presence of sludgemycin has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.
+\nWithout regular doses of sludgemycin, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>Chemical_Sludgemycin</causesNeed>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.045</severityPerDay>
+        <showDaysToRecover>true</showDaysToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+      </li>
+      <li>
+        <label>withdrawal</label>
+        <painFactor>3.40</painFactor>
+        <hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+        <naturalHealingFactor>0.5</naturalHealingFactor>
+        <statOffsets>
+          <RestFallRateFactor>0.3</RestFallRateFactor>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>40</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <ThoughtDef>
+    <defName>SludgemycinWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>SludgemycinAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>sludgemycin withdrawal</label>
+        <description>I need that lightning powder again… everything feels dull.</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>SludgemycinTolerance</defName>
+    <label>sludgemycin tolerance</label>
+    <description>A built-up tolerance to sludgemycin. The more severe this tolerance is, the more sludgemycin it takes to get the same effect.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.015</severityPerDay>
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>Sludgemycin</chemical>
+      </li>
+    </comps>
+    <hediffGivers>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.45, 99999)</li>
+            <li>(0.5, 120)</li>
+            <li>(1, 90)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Liver</li>
+        </partsToAffect>
+      </li>
+    </hediffGivers>
+  </HediffDef>
+  
+
+
 </Defs>
