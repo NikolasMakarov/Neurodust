@@ -293,7 +293,7 @@
 
   <ThingDef ParentName="MakeableDrugBase">
     <defName>CC_Neurosnap</defName>
-    <label>brainstem</label>
+    <label>neurosnap</label>
     <description>A delicate injector preloaded with deep-blue cerebrofluid, containing synthetic glial threads and consciousness amplifiers. Brainstem boosts focus dramatically—but at a cost. The serum inflames neural tissue, reducing cognition over time. Developed for elite psycasters; repurposed by everyone else.</description>
     <possessionCount>5</possessionCount>
     <descriptionHyperlinks>
@@ -383,3 +383,4 @@
   </ThingDef>
 
 </Defs>
+

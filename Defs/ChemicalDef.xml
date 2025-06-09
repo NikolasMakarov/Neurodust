@@ -5,9 +5,9 @@
 
   <HediffDef>
     <defName>NeurodustHigh</defName>
-    <label>high on nurodust</label>
-    <labelNoun>a nurodust high</labelNoun>
-    <description>Active nurodust in the bloodstream. Generates an intense euphoric high.</description>
+    <label>high on neurodust</label>
+    <labelNoun>a neurodust high</labelNoun>
+    <description>Active neurodust in the bloodstream. Generates an intense euphoric high.</description>
     <hediffClass>Hediff_High</hediffClass>
     <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
